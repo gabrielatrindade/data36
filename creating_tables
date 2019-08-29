@@ -1,0 +1,58 @@
+CREATE TABLE registrations
+(
+	file_name TEXT NOT NULL,
+	date DATE NOT NULL,
+	time TIME NOT NULL,
+	user_id INTEGER PRIMARY KEY,
+	event TEXT NOT NULL,
+	birth_year INTEGER,
+	device_type TEXT,
+	country TEXT,
+	source TEXT
+);
+
+CREATE TABLE free_tree
+(
+	file_name TEXT NOT NULL,
+	date DATE NOT NULL,
+	user_id INTEGER NOT NULL,
+	event TEXT NOT NULL
+);
+
+CREATE TABLE super_tree
+(
+	file_name TEXT NOT NULL,
+	date DATE NOT NULL,
+	user_id INTEGER NOT NULL,
+	event TEXT NOT NULL
+);
+
+
+
+ATTRIBUTES (COLUMNS) FOR THE EVENTS:
+
+1. REGISTRATION:
+
+file_name
+date
+time
+user_id
+event [registration]
+birth year [years between 1970 and 2000]
+device_type [ios, android, error]
+country [germany, brazil, united states, sweden, philippines]
+source [google, invite_a_friend, article, paid]
+
+2. SENT_A_FREE_TREE:
+
+file_name
+date
+user_id
+event [sent_a_free_tree]
+
+3. SENT_A_SUPER_TREE:
+
+file_name
+date
+user_id
+event [sent_a_super_tree]

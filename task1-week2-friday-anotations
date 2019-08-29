@@ -1,0 +1,35 @@
+TASK 2 WEEK 2 FRIDAY
+
+What’s our largest user segment?
+What’s our user segment with the most free tree sends?
+What’s our user segment with the most super tree sends?
+
+Registrations per
+	country -- OK
+	birth_year -- OK
+	device_type -- OK
+	source -- OK
+	date
+	date, source/country/birth_year
+
+Free-tree sent 
+	country -- OK
+	birth_year -- OK
+	device_type -- OK
+	source -- OK
+	date
+
+Super-tree sent 
+	country -- OK
+	birth_year -- OK
+	device_type -- OK
+	source -- OK
+	date
+
+
+A SIMPLE MICRO-SEGMENTATION EXAMPLE:
+
+SELECT source, phone_type, location, COUNT(*)
+FROM registrations
+GROUP BY source, phone_type, location
+ORDER BY count;
