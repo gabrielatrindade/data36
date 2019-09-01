@@ -2,7 +2,7 @@
 
 -- DAU (Daily Active Users)
 SELECT 
-	COUNT(DISTINCT(user_id))
+	COUNT(DISTINCT(user_id)) AS daily_active_users
 FROM
 	(
 	SELECT * FROM free_tree
@@ -10,6 +10,18 @@ FROM
 	SELECT * FROM super_tree
 	) as free_super_tree
 WHERE date = current_date-1;
+ -- LAST 7 DAYS
+SELECT
+	free_super_tree.date,
+	COUNT(DISTINCT(user_id)) AS daily_active_users
+FROM
+	(
+	SELECT * FROM free_tree
+	UNION ALL
+	SELECT * FROM super_tree
+	) as free_super_tree
+GROUP BY free_super_tree.date
+HAVING date > current_date-8;
 
 -- Daily Revenue
 -- remember, the first super_tree is free, then I need to check if it is the first one or not
@@ -48,7 +60,8 @@ JOIN
 	FROM super_tree
 	WHERE date = current_date-1
 	GROUP BY user_id) AS revenue
-ON first_send_before_yesterday.user_id = revenue.user_id);
+ON first_send_before_yesterday.user_id = revenue.user_id)
+AS daily_revenue;
 
 -- Daily Revenue MY SOLUTION WRONG
 SELECT
