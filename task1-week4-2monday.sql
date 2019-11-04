@@ -7,6 +7,8 @@ SELECT
 	COUNT(DISTINCT super_tree.user_id) AS super_tree_users,
 	COUNT(DISTINCT paying_super_tree_users.user_id) AS paying_super_tree_users
 FROM registrations
+-- Why didn't I need to compare the date: because I'm making a left join from registrations,
+-- then it will return just who did the registration that day.
 LEFT JOIN free_tree
 	ON registrations.user_id = free_tree.user_id
 LEFT JOIN super_tree
