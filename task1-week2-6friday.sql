@@ -71,9 +71,9 @@ GROUP BY date, source
 ORDER by date;
 
 -- A SIMPLE MICRO-SEGMENTATION EXAMPLE:
-SELECT source, device_type, country, COUNT(*)
+SELECT source, device_type, country, birth_year, COUNT(*)
 FROM registrations
-GROUP BY source, device_type, country
+GROUP BY source, device_type, country, birth_year
 ORDER BY count DESC;
 
 -- FREE-TREE SENT BY COUNTRY // país com maior número de free-tree enviada : USA
