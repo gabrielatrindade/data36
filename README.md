@@ -5,7 +5,7 @@
 ## The course
 This course simulated a startup with an imaginarium application which it allowed to deal with a **Data Scientist daily** tasks.
 The mentor (Tomi) assigned different tasks every other day during 6 weeks. <br>
-Here are the tasks performed locally, almost all by using SQL. The tasks with Python you can find on [send_a_tree Repository] (https://github.com/gabrielatrindade/send-a-tree)
+Here are the tasks performed locally, almost all by using SQL. The tasks with Python you can find on [send_a_tree Repository](https://github.com/gabrielatrindade/send-a-tree)
 
 ## Learning and Practing
 - queries-learning.sql : practice of SQL queries through different datasets
