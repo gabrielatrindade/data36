@@ -39,30 +39,7 @@ FROM
     ) AS invite_a_friend_paid_tree_revenue;
 
 -- What's the total revenue by phone_type? And by birth_year?
--- SOLUÇÃO ERRADA!!!!!!! POR QUE?
-SELECT
-  device_type_paid_tree_revenue.device_type,
-  SUM(revenue)
-FROM
-    (
-    SELECT
-      registrations.user_id,
-      registrations.device_type,
-      COUNT(*)-1 AS revenue
-    FROM registrations
-    WHERE                           --it can be a INNER JOIN
-        registrations.user_id IN
-          (
-          SELECT 
-            super_tree.user_id
-          FROM super_tree
-          )
-    GROUP BY registrations.user_id, registrations.device_type
-    ) AS device_type_paid_tree_revenue
-GROUP BY device_type_paid_tree_revenue.device_type;
-
 -- RESOLUTION using INNER JOIN
--- SOLUÇÃO CORRETAA!
 SELECT
   device_type_revenue.device_type,
   SUM(revenue)
@@ -85,30 +62,7 @@ FROM registrations
 GROUP BY device_type;
 
 -- birth_year
--- SOLUÇÃO ERRADA!!!!!!! POR QUE?
-SELECT
-    birth_year_revenue.birth_year,
-    SUM(revenue)
-FROM
-    (
-    SELECT 
-      registrations.user_id,
-      registrations.birth_year,
-      COUNT(*)-1 AS revenue
-    FROM registrations
-    WHERE registrations.user_id IN 
-            (
-            SELECT
-              super_tree.user_id
-            FROM super_tree
-            )
-    GROUP BY registrations.birth_year, registrations.user_id
-    ) AS birth_year_revenue
-GROUP BY birth_year_revenue.birth_year
-ORDER BY birth_year_revenue.birth_year;
-
 -- RESOLUTION using INNER JOIN
--- SOLUÇÃO CORRETA!!!!!!
 SELECT
   birth_year_paid_revenue.birth_year,
   SUM(revenue)

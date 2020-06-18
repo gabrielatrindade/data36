@@ -63,21 +63,6 @@ JOIN
 ON first_send_before_yesterday.user_id = revenue.user_id)
 AS daily_revenue;
 
--- Daily Revenue MY SOLUTION WRONG
-SELECT
-	SUM(super_tree_sends) - COUNT(period_sends='yesterday')
-FROM
-	(SELECT 
-		user_id,
-	 	MIN(super_tree.date) AS first_send,
-	 	COUNT(*) AS super_tree_sends,
-	 	CASE WHEN ((MIN(super_tree.date)) = current_date-1) THEN 'yesterday'
-			 WHEN ((MIN(super_tree.date)) < current_date-1) THEN 'before_yesterday'
-		END as period_sends
-	FROM super_tree
-	GROUP BY user_id) AS super_tree_sends_by_user
-;
-
 -- 'DAILY' REVENUE (ALTERNATIVE SOLUTION)
 -- revenue de tudo - revenue de dias antes de ontem
 SELECT
